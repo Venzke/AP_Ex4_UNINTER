@@ -1,0 +1,67 @@
+/*
+Faça um programa, em linguagem C, para calcular a área e o perímetro de um hexágono.
+
+	O programa deve implementar uma função chamada calc_hexa que calcula a área e o perímetro de um hexágono regular de lado L. 
+
+	O programa deve solicitar ao usuário o lado do polígono, calcular e imprimir a área e o perímetro do polígono. 
+
+	O programa termina quando for digitado um valor negativo qualquer para o lado. A função deve obedecer ao seguinte protótipo:
+
+		void calc_hexa(float L, float *area, float *perimetro);
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+void Calc_Hexa(float l, float* area, float* perimetro); //PROTOTIPO DA FUNÇÃO CALC_HEXA.
+
+int main(void) {
+
+	struct Variaveis //STRUCT PARA GUARDAR AS VARIAVEIS.
+	{
+		float Lado, area, perimetro;
+	};
+	struct Variaveis Dados; //DEFININDO O NOME PARA ACESSAR AS VARIAVEIS DENTRO DA STRUCT.
+
+	printf("Exercicio 4 ---------------------------------------------------------------------------- Gabriel Moreira - RU: 3329252");
+	printf("\n\n");
+
+	printf("Informe o tamanho do lado do hexagono: ");
+	scanf_s("%f", &Dados.Lado); //JOGA O DADO INSERIDO NA VARIAVEL LADO CONTIDO NA STRUCT.
+
+	if (Dados.Lado <0) //IF CASO O VALOR INSERIDO FOR MENOR QUE 0 OCORRE O ERRO E REPETE A INSTRUÇÃO.
+	{
+		printf(" -- ERRO, Numero invalido --");
+		printf("\n Tente Novamente! \n\n");
+
+		printf("Informe o tamanho do lado do hexagono: "); 
+		scanf_s("%f", &Dados.Lado); //JOGA O DADO INSERIDO NA VARIAVEL LADO CONTIDO NA STRUCT.
+		
+	}
+	printf("\n\n");
+	printf("------------------------------------------------------------------------------------------------------------------------");
+	printf("\n\n");
+
+
+	Calc_Hexa(Dados.Lado, &Dados.area, &Dados.perimetro);
+
+	printf("\n");
+	printf("Area do hexagono regular e: %.2f", Dados.area); //IMPRESSÃO DO RESULTADO DA AREA DO HEXAGONO REGULAR.
+	printf("\n");
+
+	printf("O valor do poligono e: %.2f", Dados.perimetro); //IMPRESSÃO DO RESULTADO DO VALOR DO POLIGONO.
+	printf("\n");
+
+	printf("Exercicio 4 ---------------------------------------------------------------------------- Gabriel Moreira - RU: 3329252");
+	printf("\n\n");
+
+
+	
+}// Fim da main
+
+void Calc_Hexa(float l, float *area, float *perimetro) {
+
+	*area = 6 * pow(l, 2) * sqrt(3) / 4;		//FORMULA DA AREA DO HEXAGONO.
+	*perimetro = 6 * l;	//FORMULA DO POLIGONO.
+	return;
+} //FIM DA FUNÇÃO
